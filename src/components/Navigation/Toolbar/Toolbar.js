@@ -5,7 +5,7 @@ import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems'
 
 const toolbar = (props) => (
-  <heeader className={classes.Toolbar}>
+  <header className={classes.Toolbar}>
     <div>MENU</div>
     <div className={classes.Logo}>
       <Logo/>
@@ -13,7 +13,7 @@ const toolbar = (props) => (
     <nav className={classes.DesktopOnly}>
       <NavigationItems/>
     </nav>
-  </heeader>
+  </header>
 );
 
 export default toolbar;
