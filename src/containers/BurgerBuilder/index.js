@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Auxiliary from '../../hoc/Auxiliary';
 import Burger from '../../components/Burger';
 import BuildControls from '../../components/Burger/BuildControls';
 import Modal from '../../components/UI/Modal';
@@ -94,7 +93,7 @@ class BurgerBuilder extends Component {
     }
     // {salad: true, meat: false, ..}
     return (
-      <Auxiliary>
+      <>
         <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
           <OrderSummary
             ingredients={this.state.ingredients}
@@ -110,7 +109,7 @@ class BurgerBuilder extends Component {
           purchasable={this.state.purchasable}
           ordered={this.purchaseHandler}
           price={this.state.totalPrice}/>
-      </Auxiliary>
+      </>
     );
   }
 }
