@@ -1,0 +1,23 @@
+1. If you want to check your whole project, you can run these steps:
+  1.1 $ npm install eslint --save-dev -> will set-up the package, if it's needed
+  1.2 $ npx install-peerdeps --dev eslint-config-airbnb
+  1.3 Create a file .eslintrc and add it to the root of app.
+
+2. Example of the .eslintrc file
+
+  {
+     "extends": "airbnb",
+     "rules": {
+       "indent": [2, "tab", { "SwitchCase": 1, "VariableDeclarator": 1 }],
+       "react/prop-types": 0,
+       "react/jsx-indent-props": [2, "tab"]
+     }
+   }
+
+  It can be changed and expands to the necessary size.(According to rules - Check on the Google)
+
+3. Via the combination Alt + Enter - you can solve the problem (if it is possible and ESLint allow you
+    to do that)
+
+4. And you can read more info about this. But remember that ideal code won't be in reality.
+   Resolve your code correctly, wisely and in measure.
