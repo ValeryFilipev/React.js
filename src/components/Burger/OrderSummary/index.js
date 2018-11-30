@@ -1,19 +1,13 @@
-/* eslint-disable */
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import Button from '../../UI/Button';
 
-class OrderSummary extends Component {
-  // TODO: This could be a functional component, does not have to be a class here.
-  componentWillUpdate () {
-    console.log('[OrderSummary] WillUpdate');
-  }
-
-  render () {
-    const ingredientSummary = Object.keys(this.props.ingredients)
+const orderSummary = (props) => {
+    const ingredientSummary = Object.keys(props.ingredients)
       .map(igKey => {
         return (<li key={igKey}>
-          <span style={{textTransform: 'capitalize'}}>{igKey}</span>: {this.props.ingredients[igKey]}
+          <span style={{textTransform: 'capitalize'}}>{igKey}</span>: {props.ingredients[igKey]}
         </li>);
       });
 
@@ -24,13 +18,20 @@ class OrderSummary extends Component {
         <ul>
           {ingredientSummary}
         </ul>
-        <p><strong>Total price: {this.props.price.toFixed(2)}</strong></p>
+        <p><strong>Total price: {props.price.toFixed(2)}</strong></p>
         <p>Continue to Checkout?</p>
-        <Button btnType="Danger" clicked={this.props.purchaseCancelled}>CANCEL</Button>
-        <Button btnType="Success" clicked={this.props.purchaseContinued}>CONTINUE</Button>
+        <Button
+          btnType="Danger"
+          clicked={props.purchaseCancelled}>CANCEL</Button>
+        <Button
+          btnType="Success"
+          clicked={props.purchaseContinued}>CONTINUE</Button>
       </>
     );
-  }
-}
+};
 
-export default OrderSummary;
+orderSummary.propTypes = {
+  ingredientSummary: PropTypes.arrayOf(PropTypes.string)
+};
+
+export default orderSummary;

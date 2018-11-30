@@ -1,5 +1,5 @@
-/*eslint-disable */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Burger from '../../components/Burger';
 import BuildControls from '../../components/Burger/BuildControls';
@@ -14,22 +14,21 @@ const INGREDIENT_PRICES = {
 };
 
 class BurgerBuilder extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {...}
-  // }
-
-  state = {
-    ingredients: {
-      salad: 0,
-      bacon: 0,
-      cheese: 0,
-      meat: 0
-    },
-    totalPrice: 4,
-    purchasable: false,
-    purchasing: false
-  };
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      ingredients: {
+        salad: 0,
+        bacon: 0,
+        cheese: 0,
+        meat: 0
+      },
+      totalPrice: 4,
+      purchasable: false,
+      purchasing: false
+    };
+  }
   
   updatePurchaseState(ingredients) {
     const sum = Object.keys(ingredients)
@@ -95,24 +94,47 @@ class BurgerBuilder extends Component {
     // {salad: true, meat: false, ..}
     return (
       <>
-        <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
+        <Modal
+          show={this.state.purchasing}
+          modalClosed={this.purchaseCancelHandler}>
           <OrderSummary
             ingredients={this.state.ingredients}
             price={this.state.totalPrice}
             purchaseCancelled={this.purchaseCancelHandler}
-            purchaseContinued={this.purchaseContinueHandler}/>
+            purchaseContinued={this.purchaseContinueHandler}
+          />
         </Modal>
-        <Burger ingredients={this.state.ingredients}/>
+        <Burger
+          ingredients={this.state.ingredients}
+        />
         <BuildControls
           ingredientAdded={this.addIngredientHandler}
           ingredientRemoved={this.removeIngredientHandler}
           disabled={disabledInfo}
           purchasable={this.state.purchasable}
           ordered={this.purchaseHandler}
-          price={this.state.totalPrice}/>
+          price={this.state.totalPrice}
+        />
       </>
     );
   }
 }
+
+BurgerBuilder.propTypes = {
+  salad: PropTypes.number,
+  cheese: PropTypes.number,
+  meat: PropTypes.number,
+  bacon: PropTypes.number,
+  totalPrice: PropTypes.number,
+  purchasable: PropTypes.bool,
+  purchasing: PropTypes.bool,
+  INGREDIENT_PRICES: PropTypes.object,
+  purchaseHandler: PropTypes.func,
+  purchaseCancelHandler: PropTypes.func,
+  purchaseContinueHandler: PropTypes.func,
+  updatePurchaseState: PropTypes.func,
+  addIngredientHandler: PropTypes.func,
+  removeIngredientHandler: PropTypes.func
+};
 
 export default BurgerBuilder;

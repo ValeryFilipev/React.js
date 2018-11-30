@@ -1,5 +1,5 @@
-/* eslint-disable */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './index.css';
 import BurgerIngredient from './BurgerIngredient';
@@ -26,6 +26,10 @@ const burger = (props) => {
       <BurgerIngredient type="bread-bottom" />
     </div>
   );
+};
+
+burger.propTypes = {
+  transformedIngredients: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default burger;

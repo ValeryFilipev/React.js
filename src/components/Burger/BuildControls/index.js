@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './index.css';
 import BuildControl from './BuildControl';
@@ -19,7 +20,8 @@ const buildControls = (props) => (
         label={ctrl.label}
         added={() => props.ingredientAdded(ctrl.type)}
         removed={() => props.ingredientRemoved(ctrl.type)}
-        disabled={props.disabled[ctrl.type]}/>
+        disabled={props.disabled[ctrl.type]}
+      />
     ))}
     <button
       className={classes.OrderButton}
@@ -27,5 +29,9 @@ const buildControls = (props) => (
       onClick={props.ordered}>ORDER NOW</button>
   </div>
 );
+
+buildControls.propTypes = {
+  controls: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default buildControls;

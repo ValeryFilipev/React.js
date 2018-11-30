@@ -21,3 +21,11 @@
 
 4. And you can read more info about this. But remember that ideal code won't be in reality.
    Resolve your code correctly, wisely and in measure.
+
+5. If you are brave and switch on ESLint, you can knock it out by comments like :
+    /* eslint-disable */ - for the whole  file
+    // eslint-disable-line no-use-before-define - for the one specific line
+    https://stackoverflow.com/questions/27732209/turning-off-eslint-rule-for-a-specific-line - there are loads of
+    variants to do it.
+
+6. Profit =)
