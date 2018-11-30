@@ -6,6 +6,7 @@ import BuildControls from '../../components/Burger/BuildControls';
 import Modal from '../../components/UI/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary';
 import Spinner from '../../components/UI/Spinner';
+import withErrorHandler from '../../hoc/withErrorHandler';
 import axios from '../../axios-orders';
 
 const INGREDIENT_PRICES = {
@@ -167,4 +168,4 @@ BurgerBuilder.propTypes = {
   removeIngredientHandler: PropTypes.func
 };
 
-export default BurgerBuilder;
+export default withErrorHandler(BurgerBuilder, axios);
