@@ -9,7 +9,7 @@ class Layout extends Component {
     super(props);
     
     this.state = {
-      showSideDrawer: true
+      showSideDrawer: false
     };
   }
   

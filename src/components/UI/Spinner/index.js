@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './index.css';
 
-const index = (props) => (
+const index = () => (
   <div className={classes.Loader}>Loading...</div>
 );
 
