@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from "react-router-dom";
 import PropTypes from 'prop-types';
 
 import classes from './index.css';
@@ -32,4 +33,4 @@ burger.propTypes = {
   transformedIngredients: PropTypes.arrayOf(PropTypes.string)
 };
 
-export default burger;
+export default withRouter(burger);
