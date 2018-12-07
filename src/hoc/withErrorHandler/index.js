@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-
 import Modal from '../../components/UI/Modal';
 
 const withErrorHandler = (WrappedComponent, axios) => {

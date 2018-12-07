@@ -155,6 +155,7 @@ BurgerBuilder.propTypes = {
   purchasable: PropTypes.bool,
   purchasing: PropTypes.bool,
   loading: PropTypes.bool,
+  error: PropTypes.bool,
   INGREDIENT_PRICES: PropTypes.object,
   salad: PropTypes.number,
   cheese: PropTypes.number,

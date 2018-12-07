@@ -57,7 +57,9 @@ class Checkout extends Component {
 
 Checkout.propTypes = {
   ingredients: PropTypes.object,
-  price: PropTypes.number
+  price: PropTypes.number,
+  checkoutCancelledHandler: PropTypes.func,
+  checkoutContinuedHandler: PropTypes.func
 };
 
 export default Checkout;

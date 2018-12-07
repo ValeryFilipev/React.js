@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './index.css';
 import Toolbar from '../../components/Navigation/Toolbar';
@@ -42,5 +43,10 @@ class Layout extends Component {
     )
   }
 }
+
+Layout.proptypes = {
+  sideDrawerClosedHandler: PropTypes.func,
+  sideDrawerToggleHandler: PropTypes.func
+};
 
 export default Layout;

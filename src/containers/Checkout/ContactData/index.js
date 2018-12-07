@@ -76,7 +76,8 @@ ContactData.propTypes = {
   email: PropTypes.string,
   address: PropTypes.object,
   street: PropTypes.string,
-  postalCode: PropTypes.string
+  postalCode: PropTypes.string,
+  orderHandler: PropTypes.func
 };
 
 export default ContactData;
