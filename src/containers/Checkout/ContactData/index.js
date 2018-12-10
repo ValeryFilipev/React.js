@@ -44,15 +44,16 @@ class ContactData extends Component {
           elementConfig: {
             type: 'text',
             placeholder: 'ZIP Code',
-            touched: false
           },
           value: '',
           validation: {
             required: true,
             minLength: 5,
-            maxLength: 6
+            maxLength: 6,
+            isNumeric: true
           },
-          valid: false
+          valid: false,
+          touched: false
         },
         country: {
           elementType: 'input',
@@ -75,7 +76,8 @@ class ContactData extends Component {
           },
           value: '',
           validation: {
-            required: true
+            required: true,
+            isEmail: true
           },
           valid: false,
           touched: false
@@ -122,6 +124,9 @@ class ContactData extends Component {
 
   checkValidity(value, rules) {
     let isValid = true;
+    if (!rules) {
+      return true;
+    }
 
     if (rules.required) {
       isValid = value.trim() !== '' && isValid;
@@ -133,6 +138,16 @@ class ContactData extends Component {
 
     if (rules.maxLength) {
       isValid = value.length <= rules.maxLength && isValid;
+    }
+  
+    if (rules.isEmail) {
+      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+      isValid = pattern.test(value) && isValid
+    }
+  
+    if (rules.isNumeric) {
+      const pattern = /^\d+$/;
+      isValid = pattern.test(value) && isValid
     }
 
     return isValid;
