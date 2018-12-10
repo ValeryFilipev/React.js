@@ -142,12 +142,12 @@ class ContactData extends Component {
   
     if (rules.isEmail) {
       const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-      isValid = pattern.test(value) && isValid
+      isValid = pattern.test(value) && isValid;
     }
   
     if (rules.isNumeric) {
       const pattern = /^\d+$/;
-      isValid = pattern.test(value) && isValid
+      isValid = pattern.test(value) && isValid;
     }
 
     return isValid;
@@ -219,7 +219,9 @@ ContactData.propTypes = {
   email: PropTypes.object,
   deliveryMethod: PropTypes.object,
   loading: PropTypes.bool,
-  orderHandler: PropTypes.func
+  orderHandler: PropTypes.func,
+  checkValidity: PropTypes.func,
+  inputChangedHandler: PropTypes.func
 };
 
 export default ContactData;

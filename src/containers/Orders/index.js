@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import Order from '../../components/Order';
 import axios from '../../axios-orders';
@@ -44,5 +45,10 @@ class Orders extends Component {
     );
   }
 }
+
+Orders.proptypes = {
+  orders: PropTypes.array,
+  loading: PropTypes.bool
+};
 
 export default withErrorHandler(Orders, axios);

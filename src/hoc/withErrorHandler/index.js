@@ -54,6 +54,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
 };
 
 withErrorHandler.propTypes = {
+  error: PropTypes.object,
   errorConfirmedHandler: PropTypes.func
 };
 

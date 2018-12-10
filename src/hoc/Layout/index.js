@@ -45,6 +45,7 @@ class Layout extends Component {
 }
 
 Layout.proptypes = {
+  showSideDrawer: PropTypes.bool,
   sideDrawerClosedHandler: PropTypes.func,
   sideDrawerToggleHandler: PropTypes.func
 };
