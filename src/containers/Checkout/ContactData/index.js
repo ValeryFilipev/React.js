@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import Button from '../../../components/UI/Button';
 import Spinner from '../../../components/UI/Spinner';
@@ -112,7 +113,7 @@ class ContactData extends Component {
     }
 
     const order = {
-      ingredients: this.props.ingredients,
+      ingredients: this.props.ings,
       price: this.props.price,
       orderData: formData
     };
@@ -217,6 +218,13 @@ class ContactData extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    ings: state.ingredients,
+    price: state.totalPrice
+  }
+};
+
 ContactData.propTypes = {
   orderForm: PropTypes.objectOf(PropTypes.object),
   name: PropTypes.object,
@@ -231,4 +239,4 @@ ContactData.propTypes = {
   inputChangedHandler: PropTypes.func
 };
 
-export default ContactData;
+export default connect(mapStateToProps)(ContactData);
