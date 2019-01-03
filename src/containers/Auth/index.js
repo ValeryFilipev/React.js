@@ -151,6 +151,8 @@ const mapDispatchToProps = dispatch => {
 Auth.propTypes = {
   checkValidity: PropTypes.func,
   inputChangedHandler: PropTypes.func,
+  submitHandler: PropTypes.func,
+  switchAuthHandler: PropTypes.func,
   controls: PropTypes.objectOf(PropTypes.object),
   isSignUp: PropTypes.bool,
   email: PropTypes.object,

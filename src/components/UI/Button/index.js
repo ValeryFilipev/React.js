@@ -12,7 +12,7 @@ const button = (props) => (
 );
 
 button.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.any.isRequired
 };
 
 export default button;
