@@ -36,7 +36,11 @@ class BurgerBuilder extends Component {
   }
 
   purchaseHandler = () => {
-    this.setState({purchasing: true});
+    if (this.props.isAuthenticated) {
+      this.setState({purchasing: true});
+    } else {
+        this.props.history.push('/auth');
+    }
   };
 
   purchaseCancelHandler = () => {
@@ -68,6 +72,7 @@ class BurgerBuilder extends Component {
           disabled={disabledInfo}
           purchasable={this.updatePurchaseState(this.props.ings)}
           ordered={this.purchaseHandler}
+          isAuth={this.props.isAuthenticated}
           price={this.props.price} />
         </>
       );
@@ -91,20 +96,12 @@ class BurgerBuilder extends Component {
   }
 }
 
-BurgerBuilder.propTypes = {
-  purchasable: PropTypes.bool,
-  purchasing: PropTypes.bool,
-  purchaseHandler: PropTypes.func,
-  purchaseCancelHandler: PropTypes.func,
-  purchaseContinueHandler: PropTypes.func,
-  updatePurchaseState: PropTypes.func,
-};
-
 const mapStateToProps = state => {
   return {
     ings: state.burgerBuilder.ingredients,
     price: state.burgerBuilder.totalPrice,
-    error: state.burgerBuilder.error
+    error: state.burgerBuilder.error,
+    isAuthenticated: state.auth.token !== null
   };
 };
 
@@ -115,6 +112,15 @@ const mapDispatchToProps = dispatch => {
     onInitIngredients: () => dispatch(actions.initIngredients()),
     onInitPurchase: () => dispatch(actions.purchaseInit())
   }
+};
+
+BurgerBuilder.propTypes = {
+  purchasable: PropTypes.bool,
+  purchasing: PropTypes.bool,
+  purchaseHandler: PropTypes.func,
+  purchaseCancelHandler: PropTypes.func,
+  purchaseContinueHandler: PropTypes.func,
+  updatePurchaseState: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));
