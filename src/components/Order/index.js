@@ -7,12 +7,14 @@ const order = (props) => {
   const ingredients = [];
   
   for (let ingredientName in props.ingredients) {
-    ingredients.push(
-      {
-      name: ingredientName,
-      amount: props.ingredients[ingredientName]
-      }
-    );
+    if (props.ingredients.hasOwnProperty(ingredientName)) {
+      ingredients.push(
+        {
+          name: ingredientName,
+          amount: props.ingredients[ingredientName]
+        }
+      );
+    }
   }
   
   const ingredientOutput = ingredients.map(ig => {
