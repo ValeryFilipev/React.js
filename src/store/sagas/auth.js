@@ -1,4 +1,4 @@
-import { delay } from 'redux-saga';
+import { delay } from 'redux-saga/effects';
 import { put } from "redux-saga/effects";
 import * as actions from '../actions/index';
 import {logout} from "../actions/index";
