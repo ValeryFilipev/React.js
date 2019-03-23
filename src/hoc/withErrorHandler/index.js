@@ -1,55 +1,47 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Modal from '../../components/UI/Modal';
 
 const withErrorHandler = (WrappedComponent, axios) => {
-  return class extends Component {
-    constructor(props) {
-      super(props);
-
-      this.state = {
-        error: null
-      };
-    }
-
-    componentWillMount () {
-      this.reqInterceptor = axios.interceptors.request.use(request => {
-        this.setState({error: null});
+  return props => {
+    const [error, setError] = useState(null);
+    
+      const reqInterceptor = axios.interceptors.request.use(request => {
+        setError(null);
         return request;
       });
-      this.resInterceptor = axios.interceptors.response.use(response => response, error => {
-        this.setState({error: error});
-      })
-    }
-
-    componentWillUnmount () {
-      axios.interceptors.request.eject(this.reqInterceptor);
-      axios.interceptors.response.eject(this.resInterceptor);
-    }
-
-    errorConfirmedHandler = () => {
-      this.setState({error: null})
+      const resInterceptor = axios.interceptors.response.use(response => response, err => {
+        setError(err);
+      });
+  
+    useEffect(() => {
+      return () => {
+        axios.interceptors.request.eject(reqInterceptor);
+        axios.interceptors.response.eject(resInterceptor);
+      }
+    }, [reqInterceptor, resInterceptor]);
+  
+    const errorConfirmedHandler = () => {
+      setError(null);
     };
-
-    render () {
-      return (
-        <>
-          <Modal
-            show={this.state.error}
-            modalClosed={this.errorConfirmedHandler}>
-            {
-              this.state.error
+  
+    return (
+      <>
+        <Modal
+          show={error}
+          modalClosed={errorConfirmedHandler}>
+          {
+            error
               ?
-              this.state.error.message
+              error.message
               :
               null
-            }
-          </Modal>
-          <WrappedComponent {...this.props} />
-        </>
-      )
-    }
+          }
+        </Modal>
+        <WrappedComponent {...props} />
+      </>
+    )
   }
 };
 
