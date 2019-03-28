@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Button from '../../UI/Button';
 
-const orderSummary = (props) => {
+const orderSummary = props => {
     const ingredientSummary = Object.keys(props.ingredients)
       .map(igKey => {
         return (<li key={igKey}>
