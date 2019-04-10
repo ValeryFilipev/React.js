@@ -26,7 +26,9 @@ const burgerBuilder = props => {
       .reduce((sum, el) => {
         return sum + el;
       }, 0);
-    return sum > 0;
+    return sum < 9 ? sum > 0 : alert('Obviously, we can not serve such kind of burger. ' +
+      'Please, will re-choose and try it again, if you want to be served. ' +
+      'For now, we have to block the order-button. Sorry!');
   };
 
   const purchaseHandler = () => {
