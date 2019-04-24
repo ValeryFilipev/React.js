@@ -16,7 +16,7 @@ const orders = props => {
   
     let orders = <Spinner/>;
     if (!props.loading) {
-      orders = this.props.orders.map(order => (
+      orders = props.orders.map(order => (
             <Order
               key={order.id}
               ingredients={order.ingredients}
