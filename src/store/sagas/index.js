@@ -20,7 +20,7 @@ export function* watchAuth() {
 }
 
 export function* watchBurgerBuilder() {
-  yield takeEvery(actionTypes.INIT_INGREDIENTS, initIngredientsSaga)
+  yield takeEvery(actionTypes.INIT_INGREDIENTS, initIngredientsSaga);
 }
 
 export function* watchOrder() {

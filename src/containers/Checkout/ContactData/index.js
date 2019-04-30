@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-import Button from '../../../components/UI/Button';
-import Spinner from '../../../components/UI/Spinner';
-import classes from './index.css';
-import axios from '../../../axios-orders';
-import Input from '../../../components/UI/Input';
-import withErrorHandler from '../../../hoc/withErrorHandler';
-import * as actions from '../../../store/actions/index';
-import { updateObject, checkValidity } from '../../../shared/utility';
+import Button from "../../../components/UI/Button";
+import Spinner from "../../../components/UI/Spinner";
+import classes from "./index.css";
+import axios from "../../../axios-orders";
+import Input from "../../../components/UI/Input";
+import withErrorHandler from "../../../hoc/withErrorHandler";
+import * as actions from "../../../store/actions/index";
+import { updateObject, checkValidity } from "../../../shared/utility";
 
 const contactData = props => {
   const [orderForm, setOrderForm] = useState({
     name: {
-      elementType: 'input',
+      elementType: "input",
       elementConfig: {
-        type: 'text',
-        placeholder: 'Your Name'
+        type: "text",
+        placeholder: "Your Name"
       },
-      value: '',
+      value: "",
       validation: {
         required: true
       },
@@ -27,12 +27,12 @@ const contactData = props => {
       touched: false
     },
     street: {
-      elementType: 'input',
+      elementType: "input",
       elementConfig: {
-        type: 'text',
-        placeholder: 'Street'
+        type: "text",
+        placeholder: "Street"
       },
-      value: '',
+      value: "",
       validation: {
         required: true
       },
@@ -40,12 +40,12 @@ const contactData = props => {
       touched: false
     },
     zipCode: {
-      elementType: 'input',
+      elementType: "input",
       elementConfig: {
-        type: 'text',
-        placeholder: 'ZIP Code'
+        type: "text",
+        placeholder: "ZIP Code"
       },
-      value: '',
+      value: "",
       validation: {
         required: true,
         minLength: 5,
@@ -56,12 +56,12 @@ const contactData = props => {
       touched: false
     },
     country: {
-      elementType: 'input',
+      elementType: "input",
       elementConfig: {
-        type: 'text',
-        placeholder: 'Country'
+        type: "text",
+        placeholder: "Country"
       },
-      value: '',
+      value: "",
       validation: {
         required: true
       },
@@ -69,12 +69,12 @@ const contactData = props => {
       touched: false
     },
     email: {
-      elementType: 'input',
+      elementType: "input",
       elementConfig: {
-        type: 'email',
-        placeholder: 'Your E-Mail'
+        type: "email",
+        placeholder: "Your E-Mail"
       },
-      value: '',
+      value: "",
       validation: {
         required: true,
         isEmail: true
@@ -83,23 +83,23 @@ const contactData = props => {
       touched: false
     },
     deliveryMethod: {
-      elementType: 'select',
+      elementType: "select",
       elementConfig: {
         options: [
-          { value: 'fastest', displayValue: 'Fastest' },
-          { value: 'cheapest', displayValue: 'Cheapest' }
+          { value: "fastest", displayValue: "Fastest" },
+          { value: "cheapest", displayValue: "Cheapest" }
         ]
       },
-      value: 'fastest',
+      value: "fastest",
       validation: {},
       valid: true
     }
   });
   const [formIsValid, setFormIsValid] = useState(false);
-  
+
   const orderHandler = event => {
     event.preventDefault();
-    
+
     const formData = {};
     for (let formElementIdentifier in orderForm) {
       formData[formElementIdentifier] = orderForm[formElementIdentifier].value;
@@ -110,10 +110,10 @@ const contactData = props => {
       orderData: formData,
       userId: props.userId
     };
-    
+
     props.onOrderBurger(order, props.token);
   };
-  
+
   const inputChangedHandler = (event, inputIdentifier) => {
     const updatedFormElement = updateObject(orderForm[inputIdentifier], {
       value: event.target.value,
@@ -126,7 +126,7 @@ const contactData = props => {
     const updatedOrderForm = updateObject(orderForm, {
       [inputIdentifier]: updatedFormElement
     });
-    
+
     let formIsValid = true;
     for (let inputIdentifier in updatedOrderForm) {
       if (updatedOrderForm.hasOwnProperty(inputIdentifier)) {
@@ -136,7 +136,7 @@ const contactData = props => {
     setOrderForm(updatedOrderForm);
     setFormIsValid(formIsValid);
   };
-  
+
   const formElementsArray = [];
   for (let key in orderForm) {
     formElementsArray.push({

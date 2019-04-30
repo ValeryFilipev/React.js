@@ -9,6 +9,6 @@ export function* initIngredientsSaga(action) {
     );
     yield put(actions.setIngredients(response.data));
   } catch (error) {
-    yield put(actions.fetchIngredientsFailed())
+    yield put(actions.fetchIngredientsFailed());
   }
 }

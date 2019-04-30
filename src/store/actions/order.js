@@ -26,7 +26,7 @@ export const purchaseBurger = (orderData, token) => {
     type: actionTypes.PURCHASE_BURGER,
     orderData,
     token
-  }
+  };
 };
 
 export const purchaseInit = () => {
@@ -60,5 +60,5 @@ export const fetchOrders = (token, userId) => {
     type: actionTypes.FETCH_ORDERS,
     token,
     userId
-  }
+  };
 };

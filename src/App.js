@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import Layout from "./hoc/Layout";
 import BurgerBuilder from "./containers/BurgerBuilder";
 import Logout from "./containers/Auth/Logout";
-import Spinner from "./components/UI/Spinner"
+import Spinner from "./components/UI/Spinner";
 import * as actions from "./store/actions/index";
 
 const Checkout = React.lazy(() => {
@@ -25,34 +25,33 @@ const app = props => {
     props.onTryAutoSignup();
   }, []);
 
-  
-    let routes = (
+  let routes = (
+    <Switch>
+      <Route path="/auth" render={props => <Auth {...props} />} />
+      <Route path="/" exact component={BurgerBuilder} />
+      <Redirect to="/" />
+    </Switch>
+  );
+
+  if (props.isAuthenticated) {
+    routes = (
       <Switch>
         <Route path="/auth" render={props => <Auth {...props} />} />
+        <Route path="/checkout" render={props => <Checkout {...props} />} />
+        <Route path="/orders" render={props => <Orders {...props} />} />
+        <Route path="/logout" component={Logout} />
         <Route path="/" exact component={BurgerBuilder} />
         <Redirect to="/" />
       </Switch>
     );
-
-    if (props.isAuthenticated) {
-      routes = (
-        <Switch>
-          <Route path="/auth" render={props => <Auth {...props} />} />
-          <Route path="/checkout" render={props => <Checkout {...props} />} />
-          <Route path="/orders" render={props => <Orders {...props} />} />
-          <Route path="/logout" component={Logout} />
-          <Route path="/" exact component={BurgerBuilder} />
-          <Redirect to="/" />
-        </Switch>
-      );
-    }
-    return (
-      <div>
-        <Layout>
-          <Suspense fallback={<Spinner/>}>{routes}</Suspense>
-        </Layout>
-      </div>
-    );
+  }
+  return (
+    <div>
+      <Layout>
+        <Suspense fallback={<Spinner />}>{routes}</Suspense>
+      </Layout>
+    </div>
+  );
 };
 
 const mapStateToProps = state => {
