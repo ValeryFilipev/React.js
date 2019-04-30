@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import classes from './index.css';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
@@ -13,6 +14,7 @@ import axios from '../../axios-orders';
 
 const burgerBuilder = props => {
   const [purchasing, setPurchasing] = useState(false);
+  const [opened, setOpened] = useState(true);
 
   useEffect(() => {
     props.onInitIngredients();
@@ -38,6 +40,11 @@ const burgerBuilder = props => {
         props.onSetAuthRedirectPath('/checkout');
         props.history.push('/auth');
     }
+  };
+  
+  const goOnHandler = () => {
+    props.history.push('/');
+    setOpened(false);
   };
 
   const purchaseCancelHandler = () => {
@@ -81,6 +88,14 @@ const burgerBuilder = props => {
     // {salad: true, meat: false, ..}
     return (
       <>
+        <Modal show={opened}>
+          <div className={classes.container}>
+            <span className={classes.headline}>Welcome!</span>
+            <button
+              className={classes.button}
+              onClick={goOnHandler}>Go On!</button>
+          </div>
+        </Modal>
         <Modal
           show={purchasing}
           modalClosed={purchaseCancelHandler}>
