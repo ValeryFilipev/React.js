@@ -1,5 +1,6 @@
 {
   "projects": {
-    "staging": "react-my-burger-65639"
+    "staging": "react-my-burger-65639",
+    "default": "react-my-burger-65639"
   }
 }
