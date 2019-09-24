@@ -15,10 +15,12 @@ import axios from "../../axios-orders";
 const burgerBuilder = props => {
   const [purchasing, setPurchasing] = useState(false);
   const [opened, setOpened] = useState(true);
+  
+  const { onInitIngredients } = props;
 
   useEffect(() => {
-    props.onInitIngredients();
-  }, []);
+    onInitIngredients();
+  }, [onInitIngredients]);
 
   const updatePurchaseState = ingredients => {
     const sum = Object.keys(ingredients)
