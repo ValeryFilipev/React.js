@@ -22,7 +22,7 @@ const Auth = React.lazy(() => {
 
 const app = props => {
   const { onTryAutoSignup } = props;
-  
+
   useEffect(() => {
     onTryAutoSignup();
   }, [onTryAutoSignup]);
@@ -41,7 +41,7 @@ const app = props => {
         <Route path="/auth" render={props => <Auth {...props} />} />
         <Route path="/checkout" render={props => <Checkout {...props} />} />
         <Route path="/orders" render={props => <Orders {...props} />} />
-        <Route path="/logout" component={Logout} />
+        <Route path="/logout" component={() => <Logout />} />
         <Route path="/" exact component={BurgerBuilder} />
         <Redirect to="/" />
       </Switch>
