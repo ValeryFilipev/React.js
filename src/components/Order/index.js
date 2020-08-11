@@ -43,7 +43,6 @@ const order = props => {
 };
 
 order.proptypes = {
-  ingredientOutput: PropTypes.shape,
   ingredients: PropTypes.array
 };
 

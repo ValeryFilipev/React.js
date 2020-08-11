@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import Button from "../../UI/Button";
 
@@ -30,10 +29,6 @@ const orderSummary = props => {
       </Button>
     </>
   );
-};
-
-orderSummary.propTypes = {
-  ingredientSummary: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default orderSummary;

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import classes from "./index.css";
 
 const input = props => {
-  let inputElement = null;
+  let inputElement;
   const inputClasses = [classes.InputElement];
 
   if (props.invalid && props.shouldValidate && props.touched) {
@@ -67,8 +67,7 @@ const input = props => {
 };
 
 input.proptypes = {
-  elementType: PropTypes.string.isRequired,
-  inputElement: PropTypes.object.isRequired
+  elementType: PropTypes.string.isRequired
 };
 
 export default input;

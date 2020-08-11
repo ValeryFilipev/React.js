@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import Order from "../../components/Order";
@@ -42,10 +41,6 @@ const mapDispatchToProps = dispatch => {
     onFetchOrders: (token, userId) =>
       dispatch(actions.fetchOrders(token, userId))
   };
-};
-
-orders.proptypes = {
-  mapDispatchToProps: PropTypes.func
 };
 
 export default connect(

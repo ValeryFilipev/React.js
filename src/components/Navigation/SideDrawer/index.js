@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import Logo from "../../Logo";
 import NavigationItems from "../NavigationItems";
@@ -26,10 +25,6 @@ const sideDrawer = props => {
       </div>
     </>
   );
-};
-
-sideDrawer.proptypes = {
-  attachedClasses: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default sideDrawer;

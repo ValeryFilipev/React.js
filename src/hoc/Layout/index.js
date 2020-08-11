@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import classes from "./index.css";
@@ -37,12 +36,6 @@ const mapStateToProps = state => {
   return {
     isAuthenticated: state.auth.token !== null
   };
-};
-
-layout.proptypes = {
-  showSideDrawer: PropTypes.bool,
-  sideDrawerClosedHandler: PropTypes.func,
-  sideDrawerToggleHandler: PropTypes.func
 };
 
 export default connect(mapStateToProps)(layout);

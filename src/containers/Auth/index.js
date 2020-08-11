@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
@@ -144,13 +143,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.auth(email, password, isSignUp)),
     onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath("/"))
   };
-};
-
-auth.propTypes = {
-  checkValidity: PropTypes.func,
-  inputChangedHandler: PropTypes.func,
-  submitHandler: PropTypes.func,
-  switchAuthHandler: PropTypes.func
 };
 
 export default connect(

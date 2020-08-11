@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import CheckoutSummary from "../../components/Order/CheckoutSummary";
@@ -41,11 +40,6 @@ const mapStateToProps = state => {
     ings: state.burgerBuilder.ingredients,
     purchased: state.order.purchased
   };
-};
-
-checkout.propTypes = {
-  checkoutCancelledHandler: PropTypes.func,
-  checkoutContinuedHandler: PropTypes.func
 };
 
 export default connect(mapStateToProps)(checkout);

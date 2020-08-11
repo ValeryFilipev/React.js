@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import Button from "../../../components/UI/Button";
@@ -189,12 +188,6 @@ const mapDispatchToProps = dispatch => {
     onOrderBurger: (orderData, token) =>
       dispatch(actions.purchaseBurger(orderData, token))
   };
-};
-
-contactData.propTypes = {
-  orderHandler: PropTypes.func,
-  inputChangedHandler: PropTypes.func,
-  checkValidity: PropTypes.func
 };
 
 export default connect(
