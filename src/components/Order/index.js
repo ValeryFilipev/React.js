@@ -42,7 +42,7 @@ const order = props => {
   );
 };
 
-order.proptypes = {
+order.propTypes = {
   ingredients: PropTypes.array
 };
 

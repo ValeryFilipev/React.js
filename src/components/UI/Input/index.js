@@ -66,7 +66,7 @@ const input = props => {
   );
 };
 
-input.proptypes = {
+input.propTypes = {
   elementType: PropTypes.string.isRequired
 };
 
